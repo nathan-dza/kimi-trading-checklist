@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 216 25% 5%;
+    --foreground: 210 20% 97%;
+    --card: 216 18% 8%;
+    --card-foreground: 210 20% 97%;
+    --popover: 216 18% 8%;
+    --popover-foreground: 210 20% 97%;
+    --primary: 222 100% 75%;
+    --primary-foreground: 216 25% 5%;
+    --secondary: 216 12% 12%;
+    --secondary-foreground: 210 20% 97%;
+    --muted: 216 12% 15%;
+    --muted-foreground: 210 10% 65%;
+    --accent: 222 100% 75%;
+    --accent-foreground: 216 25% 5%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 97%;
+    --border: 210 10% 18%;
+    --input: 210 10% 18%;
+    --ring: 222 100% 75%;
+    --radius: 1.375rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#0b0e11] text-[#f2f5f8] antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0e11;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2329;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3038;
+}
+
+/* Grain overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Card styles */
+.glass-card {
+  background: rgba(17, 20, 25, 0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(242, 245, 248, 0.08);
+  border-radius: 22px;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply px-8 py-4 bg-[#7fa3ff] text-[#0b0e11] font-semibold rounded-full transition-all duration-200;
+}
+.btn-primary:hover {
+  @apply transform -translate-y-0.5 scale-[1.02];
+}
+
+.btn-secondary {
+  @apply px-8 py-4 bg-transparent border border-[rgba(242,245,248,0.15)] text-[#f2f5f8] font-medium rounded-full transition-all duration-200;
+}
+.btn-secondary:hover {
+  @apply bg-[rgba(242,245,248,0.05)] transform -translate-y-0.5;
+}
+
+/* Progress ring */
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.8s ease-out;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Animation utilities */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Stagger delays */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+
+/* Tabular nums for grades */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
